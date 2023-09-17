@@ -7,6 +7,7 @@ const hours = document.querySelector('[data-hours]');
 const minutes = document.querySelector('[data-minutes]');
 const seconds = document.querySelector('[data-seconds]');
 const startBtn = document.querySelector('[data-start]');
+
 let timerInterval; 
 startBtn.disabled = true;
 
@@ -28,6 +29,9 @@ const options = {
 
 const fp = flatpickr("#datetime-picker", options);
 
+// flatpickr("#datetime-picker", options);
+// const fp = document.querySelector("#datetime-picker")._flatpickr;
+
 function updateTimer() {
     const selectedDate = new Date(fp.selectedDates[0]);
     const currentDate = new Date();
@@ -35,6 +39,7 @@ function updateTimer() {
 
     if (timeDifference <= 0) {
         clearInterval(timerInterval);
+        Notiflix.Notify.info('The countdown is complete');
         return;
     }
 
